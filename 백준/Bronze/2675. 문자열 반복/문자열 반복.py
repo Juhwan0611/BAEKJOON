@@ -3,6 +3,7 @@ for _ in range(t):
     a, b = input().split()
     a = int(a)
 
+    s = ''
     for i in b:
-        print(i * a, end = "")
-    print()
+        s += i * a
+    print(s)
