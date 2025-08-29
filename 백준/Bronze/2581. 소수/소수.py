@@ -17,11 +17,10 @@ for x in li_sosu:
             c = False
             break
     if c:
-       res += x
        li_res.append(x)
 
 if not li_res:
     print(-1)
 else:
-    print(res)
+    print(sum(li_res))
     print(min(li_res))
