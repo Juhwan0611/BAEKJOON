@@ -8,5 +8,4 @@ for i in range(n):
     num.append(nm)
 
 num.sort()
-for x in num:
-    print(x)
+print("\n".join(map(str, num)))
