@@ -1,15 +1,15 @@
 import sys
 input = sys.stdin.readline
 
-M = 12345678991
+M = 1234567891
 r = 31
 
-n = int(input())
+l = int(input())
 s = input().rstrip()
 
-ans = 0
-p = 1
-for x in s:
-    ans += (ord(x) - 96) * p
-    p *= r
-print(ans % M)
+has = 0
+for i in range(l):
+    res = ord(s[i]) - 96
+    has += res * (r ** i)
+
+print(has % M)
