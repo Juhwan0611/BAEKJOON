@@ -11,10 +11,11 @@ int main() {
 	char s[51];
 	
 	while (n--) {
-		scanf("%s", s);
 		vector<char> v;
 		
 		bool ok = true;
+		
+		scanf("%s", s);
 		
 		for (int i = 0; i < strlen(s); i++) {
 			if (s[i] == '(') {
@@ -30,14 +31,13 @@ int main() {
 				}
 			}
 		}
-		
 		if (ok && v.empty()) {
 			printf("YES\n");
 		}
 		else {
 			printf("NO\n");
 		}
-	}	
+	}
 	
 	return 0;
 }
