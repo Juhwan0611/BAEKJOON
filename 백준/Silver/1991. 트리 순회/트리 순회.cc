@@ -1,32 +1,39 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-char leftchild[26];
-char rightchild[26];
+struct Node {
+	char left;
+	char right;
+};
 
-//전위순회 
+struct Node tree[26];
+
+
 void preorder(char node) {
 	if (node == '.') return;
+	
 	printf("%c", node);
-	preorder(leftchild[node - 'A']);
-	preorder(rightchild[node - 'A']);
+	preorder(tree[node - 'A'].left);
+	preorder(tree[node - 'A'].right);
 }
 
-//중위순회 
+
 void inorder(char node) {
 	if (node == '.') return;
-	inorder(leftchild[node - 'A']);
+	
+	inorder(tree[node - 'A'].left);
 	printf("%c", node);
-	inorder(rightchild[node - 'A']);
+	inorder(tree[node - 'A'].right);
 }
 
-//후위순회
+
 void postorder(char node) {
 	if (node == '.') return;
-	postorder(leftchild[node - 'A']);
-	postorder(rightchild[node - 'A']);
+	
+	postorder(tree[node - 'A'].left);
+	postorder(tree[node - 'A'].right);
 	printf("%c", node);
-} 
+}
 
 
 int main() {
@@ -34,17 +41,18 @@ int main() {
 	scanf("%d", &n);
 	
 	for (int i = 0; i < n; i++) {
-		char root, left, right;
-		scanf(" %c %c %c", &root, &left, &right);
-		leftchild[root - 'A'] = left;
-		rightchild[root - 'A'] = right;
+		char node, left, right;
+		scanf(" %c %c %c", &node, &left, &right);
+		tree[node - 'A'].left = left;
+		tree[node - 'A'].right = right;
 	}
 	
 	preorder('A');
-	printf("\n");	
+	printf("\n");
 	inorder('A');
 	printf("\n");
 	postorder('A');
 	
+	
 	return 0;
-}
+} 
