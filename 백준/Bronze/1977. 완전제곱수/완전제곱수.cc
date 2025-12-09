@@ -4,7 +4,7 @@ int main() {
 	int m, n;
 	scanf("%d %d", &m, &n);
 	
-	int sum = 0, min = 100000001;
+	int sum = 0, min = 1e9;
 	
 	for (int i = 1; i * i <= n; i++) {
 		if (i * i >= m) {
