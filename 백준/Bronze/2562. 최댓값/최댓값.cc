@@ -1,21 +1,18 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
-
 int main() {
-	int max = -10000001;
-	int n;
-	
-	int count = 0;
+	int max = 0;
+	int cnt = 0;
 	for (int i = 0; i < 9; i++) {
+		int n;
 		scanf("%d", &n);
-		if (n > max) {
+		if (max < n) {
 			max = n;
-			count = i + 1;
+			cnt = i + 1;
 		}
 	}
-
-	printf("%d\n%d\n", max, count);
-
+	
+	printf("%d\n%d\n", max, cnt);
+	
 	return 0;
 }
