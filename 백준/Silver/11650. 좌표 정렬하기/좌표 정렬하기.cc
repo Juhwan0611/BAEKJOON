@@ -1,87 +1,41 @@
-#define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
 
-int a;
+using namespace std;
 
-typedef struct check{
+struct Point
+{
 	int x, y;
-}check;
+};
 
-void sort(int left, int right, check *c) {
-	int mid = (left + right) / 2;
-	if (left == right) return;
-
-	check *temp = (check*)malloc(sizeof(check) * (right - left + 1));
-	int x = left;
-	int y = mid + 1;
-
-	sort(x, mid, c);
-	sort(y, right, c);
-
-	int k = 0;
-	while (x <= mid && y <= right) {
-		if (c[x].x > c[y].x) {
-			temp[k] = c[y];
-			k++;
-			y++;
-		}
-		else if (c[x].x == c[y].x) {
-			if (c[x].y > c[y].y) {
-				temp[k] = c[y];
-				k++;
-				y++;
-			}
-			else {
-				temp[k] = c[x];
-				k++;
-				x++;
-			}
-		}
-		else {
-			temp[k] = c[x];
-			k++;
-			x++;
-		}
+bool compare(const Point& a, const Point& b) {
+	if (a.x == b.x) { //1순위 (x좌표)가 같다면
+		return a.y < b.y; //2순위 (y좌표)를 비교
 	}
-
-	while (x <= mid) {
-		temp[k] = c[x];
-		k++;
-		x++;
-	}
-
-	while (y <= right) {
-		temp[k] = c[y];
-		k++;
-		y++;
-	}
-
-	int i = 0;
-	for (int j = left; j <= right; j++) {
-		c[j] = temp[i];
-		i++;
-	}
-	
-	free(temp);
-
+	return a.x < b.x; //기본적으로는 x좌표가 작은 순
 }
+
 int main() {
-	scanf("%d",&a);
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
 
-	check *c = (check*)malloc(sizeof(check) * a);
+	int n;
+	cin >> n;
 
-	for (int i = 0; i < a; i++) {
-		scanf("%d %d",&c[i].x,&c[i].y);
+	vector<Point> v(n);
+
+	for (int i = 0; i < n; i++) {
+		cin >> v[i].x >> v[i].y;
 	}
-	sort(0, a - 1, c);
 
-	for (int i = 0; i < a; i++) {
-		printf("%d %d\n",c[i].x,c[i].y);
+	stable_sort(v.begin(), v.end(), compare);
+
+
+	for (int i = 0; i < v.size(); i++) {
+		cout << v[i].x << " " << v[i].y << "\n";
 	}
-	
-	free(c);
-	
+
 	return 0;
 }
