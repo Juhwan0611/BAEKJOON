@@ -11,11 +11,13 @@ struct Point
 };
 
 bool compare(const Point& a, const Point& b) {
-	if (a.x == b.x) { //1순위 (x좌표)가 같다면
-		return a.y < b.y; //2순위 (y좌표)를 비교
+	if (a.x == b.x) {
+		return a.y < b.y;
 	}
-	return a.x < b.x; //기본적으로는 x좌표가 작은 순
+	return a.x < b.x;
+	 
 }
+
 
 int main() {
 	ios_base::sync_with_stdio(false);
@@ -25,15 +27,13 @@ int main() {
 	cin >> n;
 
 	vector<Point> v(n);
-
 	for (int i = 0; i < n; i++) {
 		cin >> v[i].x >> v[i].y;
 	}
 
 	stable_sort(v.begin(), v.end(), compare);
 
-
-	for (int i = 0; i < v.size(); i++) {
+	for (int i = 0; i < n; i++) {
 		cout << v[i].x << " " << v[i].y << "\n";
 	}
 
