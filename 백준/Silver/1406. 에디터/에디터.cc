@@ -17,6 +17,7 @@ int main() {
 	int m;
 	cin >> m; //명령어 개수
 
+	//편집과정
 	while (m--) {
 		char cmd;
 		cin >> cmd;
@@ -51,6 +52,7 @@ int main() {
 		left.pop();
 	}
 
+	//출력
 	while (!right.empty()) {
 		cout << right.top();
 		right.pop();
