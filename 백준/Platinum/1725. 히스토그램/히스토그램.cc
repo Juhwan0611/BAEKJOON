@@ -5,6 +5,8 @@
 
 using namespace std;
 
+typedef long long ll;
+
 int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
@@ -12,14 +14,14 @@ int main() {
 	int n;
 	cin >> n;
 
-	vector<int> h(n + 2, 0);
+	vector<ll> h(n + 2, 0);
 	for (int i = 1; i <= n; i++) {
 		cin >> h[i];
 	}
 
 	stack<int> s;
 	s.push(0); //시작 인덱스
-	int max_area = 0;
+	ll max_area = 0;
 
 	for (int i = 1; i <= n + 1; i++) {
 		//현재 막대가 top보다 낮으면 top막대의 넓이 계산 시작
@@ -28,7 +30,7 @@ int main() {
 			s.pop();
 
 			//넓이  = 높이 * 너비
-			int area = h[chk] * (i - s.top() - 1);
+			ll area = h[chk] * (i - s.top() - 1);
 			//비교 후 가장 큰 값 수정
 			max_area = max(max_area, area);
 		}
